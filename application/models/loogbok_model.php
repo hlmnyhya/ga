@@ -8,7 +8,7 @@ class loogbok_model extends CI_Model
     public function semuadata()
     {
          // return $this->db->query("SELECT * FROM bbm b left join master_kendaraan mk on mk.no_lambung=b.no_lambung left join loogbok l on l.nopol=mk.License_Plates")->result_array();
-        return $this->db->query("SELECT * FROM loogbok l left join master_kendaraan mk on l.nopol=mk.License_Plates left join bbm b on b.no_lambung=mk.no_lambung")->result_array();
+        return $this->db->query("SELECT * FROM loogbok")->result_array();
     }
     public function ProsesTambah_loogbok()
     {
