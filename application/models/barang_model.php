@@ -34,6 +34,7 @@ class barang_model extends CI_Model
             "qty" => $this->input->post('qty'),
             "satuan" => $this->input->post('satuan'),
             "kategori" => $this->input->post('kategori'),
+            "tanggal" => date('Y-m-d'),
         ];
         $this->db->insert('master_barang', $data);
     }
@@ -56,6 +57,7 @@ class barang_model extends CI_Model
             "jenis_barang" => $this->input->post('jenis_barang'),
             "satuan" => $this->input->post('satuan'),
             "kategori" => $this->input->post('kategori'),
+            "tanggal" => date('Y-m-d'),
         ];
         // var_dump($data);exit;
         $this->db->where('id_barang', $this->input->post('id_barang'));

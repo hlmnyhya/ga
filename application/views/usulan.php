@@ -18,11 +18,11 @@
                                 if ($this->session->userdata('level')=='Admin') {
                                     ?>
                                      <br>
-                                 <a href="<?php echo base_url('usulan/tambah_usulan') ?>">
-                                <button class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>
-                            
-                                </button><a><br><br>
+                                  <button class="btn btn-primary" onclick="showSweetAlert()">
+    <i class="fa fa-plus"></i> Tambah Usulan
+</button>
+
+                                    <br><br>
                                     <?php
                                 }
                                 ?>
@@ -84,5 +84,31 @@
                         
                     </div>
                 </main>
-                
-                
+
+
+<!-- SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    function showSweetAlert() {
+        Swal.fire({
+            title: 'Pilih Jenis Usulan',
+            html: `
+                <a href="<?= base_url('usulan/tambah_usulan') ?>" class="btn btn-primary mb-2">
+                    <i class="fa fa-plus"></i> Tambah Usulan Barang
+                </a> <br>
+                <a href="<?= base_url('Spk/tambah_Spk') ?>" class="btn btn-success mb-2">
+                    <i class="fa fa-plus"></i> Tambah Usulan Jasa SPK
+                </a> <br>
+                <button class="btn btn-danger" onclick="Swal.close()">Tutup</button>
+            `,
+            icon: 'info',
+            showCancelButton: false,
+            showConfirmButton: false,
+            allowOutsideClick: true,
+            allowEscapeKey: true,
+            focusConfirm: false,
+        });
+    }
+</script>
+
