@@ -95,33 +95,65 @@ class usulan_model extends CI_Model
     }
 
     public function ProsesEditdatappharga()
-    {
-       $data = [
-             "no_usulan" => $this->input->post('no_usulan'),
-            "tanggal" => $this->input->post('tanggal'),
-            "kode_barang" => $this->input->post('kode_barang'),
-            "jenis" => $this->input->post('jenis'),
-            "nama_produk&jasa" => $this->input->post('nama_produk&jasa'),
-            "spesifikasi" => $this->input->post('spesifikasi'),
-            "jumlah" => $this->input->post('jumlah'),
-            "satuan" => $this->input->post('satuan'),
-            "keterangan" => $this->input->post('keterangan'),
-            "deskripsi" => $this->input->post('deskripsi'),
-            "penyerah" => $this->input->post('penyerah'),
-            "divisi/departement_penyerah" => $this->input->post('divisi/departement_penyerah'),
-            "penerima" => $this->input->post('penerima'),
-            "divisi/departement_penerima" => $this->input->post('divisi/departement_penerima'),
-            "ttd_penerima" => $this->input->post('ttd_penerima'),
-            "ttd_penyerah" => $this->input->post('ttd_penyerah'),
-        ];
-        // var_dump($data);exit;
-        $this->db->where('id_pph', $this->input->post('id_pph'));
-        $this->db->update('pp_harga', $data);
+{
+    // Konfigurasi upload file
+    $config['upload_path']   = './uploads/ttd/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 2048; // 2MB (adjust as needed)
+    $config['encrypt_name']  = TRUE; // Rename the uploaded file
+
+    $this->load->library('upload', $config);
+    $this->upload->initialize($config);
+
+    // Upload ttd_penerima
+    if ($this->upload->do_upload('ttd_penerima')) {
+        $ttd_penerima_data = $this->upload->data();
+        $data['ttd_penerima'] = $ttd_penerima_data['file_name'];
     }
+
+    // Upload ttd_penyerah
+    if ($this->upload->do_upload('ttd_penyerah')) {
+        $ttd_penyerah_data = $this->upload->data();
+        $data['ttd_penyerah'] = $ttd_penyerah_data['file_name'];
+    }
+
+    // Data yang akan diupdate pada pp_harga
+    $pph_data = [
+        "no_usulan"                 => $this->input->post('no_usulan'),
+        "tanggal"                   => $this->input->post('tanggal'),
+        "kode_barang"               => $this->input->post('kode_barang'),
+        "jenis"                     => $this->input->post('jenis'),
+        "nama_produk_jasa"          => $this->input->post('nama_produk_jasa'),
+        "spesifikasi"               => $this->input->post('spesifikasi'),
+        "jumlah"                    => $this->input->post('jumlah'),
+        "satuan"                    => $this->input->post('satuan'),
+        "keterangan"                => $this->input->post('keterangan'),
+        "deskripsi"                 => $this->input->post('deskripsi'),
+        "penyerah"                  => $this->input->post('penyerah'),
+        "divisi_departement_penyerah" => $this->input->post('divisi_departement_penyerah'),
+        "penerima"                  => $this->input->post('penerima'),
+        "divisi_departement_penerima" => $this->input->post('divisi_departement_penerima'),
+        "ttd_penerima"              => isset($data['ttd_penerima']) ? $data['ttd_penerima'] : $this->input->post('ttd_penerima'),
+        "ttd_penyerah"              => isset($data['ttd_penyerah']) ? $data['ttd_penyerah'] : $this->input->post('ttd_penyerah'),
+    ];
+
+    // var_dump($pph_data); exit;
+
+    // Update data pp_harga berdasarkan id_pph
+    $this->db->where('id_pph', $this->input->post('id_pph'));
+    $this->db->update('pp_harga', $pph_data);
+}
+
 
 public function karyawan_divisi()
 {
     $query = $this->db->query('SELECT DISTINCT `nama`, `divisi` FROM `master_karyawan` ORDER BY `nama` ASC, `divisi` ASC');
+    return $query->result();
+}
+
+public function tampil_barang()
+{
+    $query = $this->db->query('SELECT DISTINCT `kode_barang`, `nama_barang`, `satuan`, `kategori` FROM `master_barang`');
     return $query->result();
 }
 

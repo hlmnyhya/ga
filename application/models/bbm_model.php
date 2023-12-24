@@ -12,14 +12,20 @@ class bbm_model extends CI_Model
     public function ProsesTambah_bbm()
     {
 
+        $harga_bbm = $this->input->post('harga_bbm');
+        $jumlah_harga_bbm = $this->input->post('jumlah_harga_bbm');
+
+        // Tambahkan 'Rp.' di depan harga_bbm jika belum ada
+        $harga_bbm = 'Rp.' . $harga_bbm;
+        $jumlah_harga_bbm = 'Rp.' . $jumlah_harga_bbm;
         // var_dump($this->input->post());exit;
         $data = [
             "tanggal" => $this->input->post('tanggal'),
             "nama" => $this->input->post('nama'),
             "keterangan" => $this->input->post('keterangan'),
             "Jenis_bbm" => $this->input->post('Jenis_bbm'),
-            "harga_bbm" => $this->input->post('harga_bbm'),
-            "jumlah_harga_bbm" => $this->input->post('jumlah_harga_bbm'),
+            "harga_bbm" => $harga_bbm,
+            "jumlah_harga_bbm" => $jumlah_harga_bbm,
             "no_lambung" => $this->input->post('no_lambung'),
         ];
         // var_dump($data);exit;
@@ -38,13 +44,21 @@ class bbm_model extends CI_Model
 
     public function ProsesEditDatabbm()
     {
-       $data = [
+        $harga_bbm = $this->input->post('harga_bbm');
+        $jumlah_harga_bbm = $this->input->post('jumlah_harga_bbm');
+
+        // Tambahkan 'Rp.' di depan harga_bbm jika belum ada
+        $harga_bbm = 'Rp.' . $harga_bbm;
+        $jumlah_harga_bbm = 'Rp.' . $jumlah_harga_bbm;
+        // var_dump($this->input->post());exit;
+        $data = [
             "tanggal" => $this->input->post('tanggal'),
             "nama" => $this->input->post('nama'),
             "keterangan" => $this->input->post('keterangan'),
             "Jenis_bbm" => $this->input->post('Jenis_bbm'),
-            "harga_bbm" => $this->input->post('harga_bbm'),
-            "jumlah_harga_bbm" => $this->input->post('jumlah_harga_bbm'),
+            "harga_bbm" => $harga_bbm,
+            "jumlah_harga_bbm" => $jumlah_harga_bbm,
+            "no_lambung" => $this->input->post('no_lambung'),
         ];
         // var_dump($data);exit;
         $this->db->where('id_bbm', $this->input->post('id_bbm'));

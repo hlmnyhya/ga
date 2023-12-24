@@ -61,6 +61,4 @@ public function karyawan_divisi_driver()
     return $query->result();
 }
 
-
-
 }

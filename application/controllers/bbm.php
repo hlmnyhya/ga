@@ -8,6 +8,7 @@ class bbm extends CI_Controller {
       $this->load->model('bbm_model');
       $this->load->model('kendaraan_model');
       $this->load->model('loogbok_model');
+      $this->load->model('usulan_model');
     }
 
     public function index() {
@@ -28,7 +29,7 @@ class bbm extends CI_Controller {
     public function tambah_bbm() {
         if ($this->session->userdata('user_id')) {
             $data['ken']=$this->kendaraan_model->semuadata();
-            $data['driver']=$this->loogbok_model->karyawan_divisi_driver();
+            $data['driver']=$this->usulan_model->karyawan_divisi();
             $this->load->view('templates/header');
             $this->load->view('templates/nav');
             $this->load->view('tambah_bbm',$data);

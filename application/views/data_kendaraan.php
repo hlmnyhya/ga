@@ -37,7 +37,6 @@
                                             <th>Color</th>
                                             <th>License Plates</th>
                                             <th>Photo Unit</th>
-                                            <th>File STNK/SKPD</th>
                                             <?php
                                 if ($this->session->userdata('level')=='Admin') {
                                     ?>
@@ -60,8 +59,7 @@
                                             <td><?php echo $ken['Tgl_STNK/SKPD'] ?></td>
                                             <td><?php echo $ken['color'] ?></td>
                                             <td><?php echo $ken['License_Plates'] ?></td>
-                                            <td><?php echo $ken['photo_unit'] ?></td>
-                                            <td><?php echo $ken['File_STNK/SKPD'] ?></td>
+                                            <td><img src="<?php echo base_url('./uploads/photo_unit/'.$ken['photo_unit']); ?>" width="100px" height="100px" alt=""></td>
                                              <?php
                                 if ($this->session->userdata('level')=='Admin') {
                                     ?>

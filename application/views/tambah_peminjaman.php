@@ -8,7 +8,24 @@
                             <li class="breadcrumb-item active">Beranda</li>
                         </ol>
                         <div class="row">
-                             <form method="post" action="<?php echo base_url('inventory/ProsesTambah_peminjaman'); ?>">
+                             <form method="post" action="<?php echo base_url('inventory/ProsesTambah_peminjaman'); ?>" enctype="multipart/form-data">
+                                <div class="row mb-3">
+                                    <label for="id_penyedia" class="col-sm-2 col-form-label">Divisi/Departement</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="penyerah" name="divisi/departement" required>
+                                            <option value="">Pilih Divisi/Departement</option>
+                                           <?php
+                                $uniqueDivisions = array_unique(array_column($penyerah, 'divisi'));
+                                sort($uniqueDivisions);
+                                
+                                foreach ($uniqueDivisions as $division): ?>
+                                    <option value="<?= $division ?>"><?= $division; ?></option>
+                                <?php endforeach;
+                                ?>
+                                
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="row mb-3">
                                     <label for="id_penyedia" class="col-sm-2 col-form-label">Peminjam</label>
                                     <div class="col-sm-7">
@@ -20,29 +37,17 @@
         </select>
     </div>
 </div>
-<div class="row mb-3">
-    <label for="id_penyedia" class="col-sm-2 col-form-label">Divisi/Departement</label>
-    <div class="col-sm-7">
-        <select class="form-control" id="penyerah" name="divisi/departement" required>
-            <option value="">Pilih Divisi/Departement</option>
-           <?php
-$uniqueDivisions = array_unique(array_column($penyerah, 'divisi'));
-sort($uniqueDivisions);
-
-foreach ($uniqueDivisions as $division): ?>
-    <option value="<?= $division ?>"><?= $division; ?></option>
-<?php endforeach;
-?>
-
+            <div class="row mb-3">
+                 <label for="lokasi/cabang" class="col-sm-2 col-form-label">Lokasi/cabang</label>
+                                    <div class="col-sm-7">
+        <select class="form-control" id="lokasi/cabang" name="lokasi/cabang" required>
+            <option value="">Pilih Lokasi / Cabang</option>
+            <?php foreach ($lokasi as $p): ?>
+                <option value="<?= $p->nama_lokasi ?>"><?= $p->nama_lokasi; ?></option>
+            <?php endforeach; ?>
         </select>
     </div>
 </div>
-            <div class="row mb-3">
-                <label for="lokasi/cabang" class="col-sm-2 col-form-label">Lokasi/cabang</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="lokasi/cabang">
-                </div>
-            </div>
               <div class="row mb-3">
                                     <label for="id_penyedia" class="col-sm-2 col-form-label">Kode Barang</label>
                                     <div class="col-sm-7">
@@ -57,7 +62,7 @@ foreach ($uniqueDivisions as $division): ?>
             <div class="row mb-3">
                 <label for="qty" class="col-sm-2 col-form-label">Qty</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="qty">
+                    <input type="number" class="form-control" name="qty">
                 </div>
             </div>
             <div class="row mb-3">

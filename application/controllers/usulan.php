@@ -29,6 +29,8 @@ class usulan extends CI_Controller {
         if ($this->session->userdata('user_id')) {
             
             $data['penyerah']=$this->usulan_model->karyawan_divisi();
+            $data['barang']=$this->usulan_model->tampil_barang();
+            $data['latestUsulanNumber'] = $this->getLatestUsulanNumber();
             $this->load->view('templates/header');
             $this->load->view('templates/nav');
             $this->load->view('tambah_usulan',$data);
@@ -46,4 +48,20 @@ class usulan extends CI_Controller {
         </div>');
         redirect('usulan');
     }
+
+public function getLatestUsulanNumber()
+{
+    $query = $this->db->query("SELECT MAX(CAST(SUBSTRING(no_usulan, 2) AS UNSIGNED)) as max_usulan FROM usulan");
+    $result = $query->row();
+
+    if ($result->max_usulan) {
+        $latestNumber = str_pad($result->max_usulan + 1, 4, '0', STR_PAD_LEFT);
+    } else {
+        $latestNumber = '0001';
+    }
+
+    return $latestNumber;
+}
+
+
 }

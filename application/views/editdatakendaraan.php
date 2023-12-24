@@ -5,7 +5,7 @@
         <h3>Halaman Edit Data Kendaraan</h3>
         <hr>
         <br>
-        <form method="post" action="<?php echo base_url('data_kendaraan/ProsesEditData'); ?>">
+        <form method="post" action="<?php echo base_url('kendaraan/ProsesEditdatakendaraan'); ?>" enctype="multipart/form-data">
 
         <input type="hidden" name="id_mobil" value= "<?php echo $kendaraan['id_mobil']; ?>">
             <div class="row mb-3">
@@ -67,12 +67,6 @@
                 <label for="photo_unit" class="col-sm-2 col-form-label">photo unit</label>
                 <div class="col-sm-7">
                     <input type="file" class="form-control" name="photo_unit" required="" value="<?php echo $kendaraan['photo_unit']; ?>">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="File_STNK/SKPD" class="col-sm-2 col-form-label">File STNK/SKPD</label>
-                <div class="col-sm-7">
-                    <input type="file" class="form-control" name="File_STNK" required="" value="<?php echo $kendaraan['File_STNK/SKPD']; ?>">
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 10px; margin-button: 10px;">

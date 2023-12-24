@@ -67,7 +67,7 @@ class loogbok extends CI_Controller {
         $this->loogbok_model->ProsesEditDataloogbok()();
         $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
         Data berhasil di edit!
-        </div>');
+        </div>');   
         redirect('loogbok');
     }
 }

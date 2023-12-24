@@ -29,8 +29,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Peminjaman</th>
                                             <th>Divisi/Departement</th>
+                                            <th>Nama Peminjaman</th>
                                             <th>Lokasi/Cabang</th>
                                             <th>Nama Barang</th>
                                             <th>QTY</th>
@@ -58,13 +58,13 @@
                                             ?>
                                             <tr>  
                                             <td><?php echo $no++ ?></td>
-                                            <td><?php echo $p['nama_peminjam'] ?></td>
                                             <td><?php echo $p['divisi/departement'] ?></td> 
+                                            <td><?php echo $p['nama_peminjam'] ?></td>
                                             <td><?php echo $p['lokasi/cabang'] ?></td>
                                             <td><?php echo $p['nama_barang'] ?></td>
                                             <td><?php echo $p['qty'] ?></td>
                                             <td><?php echo $p['kondisi'] ?></td>
-                                            <td><?php echo $p['paraf'] ?></td>
+                                            <td><img src="<?php echo base_url('./uploads/paraf/'.$p['paraf']); ?>" width="100px" height="100px" alt="ttd"><br><?php echo $p['nama_peminjam'] ?></td>
                                             <td><?php echo $p['keterangan'] ?></td>
                                             <td><?php echo $p['tanggal_peminjaman'] ?></td>
                                             <td><?php echo $p['tanggal_pengembalian'] ?></td>

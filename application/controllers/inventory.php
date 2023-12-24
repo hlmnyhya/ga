@@ -63,12 +63,13 @@ class Inventory extends CI_Controller {
             redirect('data_peminjaman');
         }
     }
-     public function tambah_peminjaman() {
+    public function tambah_peminjaman() {
         // Periksa apakah pengguna telah login atau belum.
         if ($this->session->userdata('user_id')) {
             // Pengguna telah login, tampilkan halaman dashboard.
             $data['penyerah']=$this->usulan_model->karyawan_divisi();
             $data['barang']=$this->inventory_model->kode_barang();
+            $data['lokasi']=$this->inventory_model->tampil_lokasi();
             $this->load->view('templates/header');
             $this->load->view('templates/nav');
             $this->load->view('tambah_peminjaman',$data);
@@ -81,21 +82,7 @@ class Inventory extends CI_Controller {
     public function ProsesTambah_peminjaman()
     {
         $this->load->model('inventory_model');
-        $data = [
-            "nama_peminjam" => $this->input->post('nama_peminjam'),
-            "divisi/departement" => $this->input->post('divisi/departement'),
-            "lokasi/cabang" => $this->input->post('lokasi/cabang'),
-            "nama_barang" => $this->input->post('nama_barang'),
-            "qty" => $this->input->post('qty'),
-            "kondisi" => $this->input->post('kondisi'),
-            "paraf" => $this->input->post('paraf'),
-            "keterangan" => $this->input->post('keterangan'),
-            "tanggal_peminjaman" => $this->input->post('tanggal_peminjaman'),
-            "tanggal_pengembalian" => $this->input->post('tanggal_pengembalian'),
-             "status" => 'Dipinjam',
-        ];
-        // var_dump($data);exit;
-        $this->inventory_model->ProsesTambah_peminjaman($data);
+        $this->inventory_model->ProsesTambah_peminjaman();
         $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
         Data baru berhasil di tambahkan!
         </div>');

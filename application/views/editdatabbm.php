@@ -5,7 +5,7 @@
         <h3>Halaman Edit Data BBM</h3>
         <hr>
         <br>
-        <form method="post" action="<?php echo base_url('data_bbm/ProsesEditDatabbm'); ?>">
+        <form method="post" action="<?php echo base_url('data_bbm/ProsesEditDatabbm'); ?>" enctype="multipart/form-data"
 
         <input type="hidden" name="id_barang" value= "<?php echo $bbm['id_bbm']; ?>">
             <div class="row mb-3">
@@ -25,7 +25,7 @@
                 <label for="jenis_barang" class="col-sm-2 col-form-label">Jenis BBM</label>
                 <div class="col-sm-7">
                    <select class="form-control" name="Jenis_bbm">
-                   <option value="pilih">--Pilih--</option>
+                   <option value="pilih"> Pilih Jenis BBM</option>
                    <option value="Dexlite">Dexlite</option>
                    <option value="Pertamina Dex">Pertamina Dex</option>
                    <option value="Pertamax">Pertamax</option>
@@ -34,15 +34,21 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="satuan" class="col-sm-2 col-form-label">Harga BBM</label>
+                <label for="no_rangka" class="col-sm-2 col-form-label">Harga BBM</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="harga_bbm" required="" value="<?php echo $bbm['harga_bbm']; ?>">
+                <div class="input-group">
+                <span class="input-group-text">Rp.</span>
+                <input type="text" class="form-control" name="harga_bbm" value="<?php echo $bbm['harga_bbm']; ?>">
+                </div>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="kategori" class="col-sm-2 col-form-label">Jumlah Harga BBM</label>
+                 <label for="kategori" class="col-sm-2 col-form-label">Jumlah Harga BBM</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="jumlah_harga_bbm" required="" value="<?php echo $bbm['jumlah_harga_bbm']; ?>">
+                    <div class="input-group">
+                <span class="input-group-text">Rp.</span>
+                <input type="text" class="form-control" name="jumlah_harga_bbm" value="<?php echo $bbm['jumlah_harga_bbm']; ?>">
+                </div>
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 10px; margin-button: 10px;">

@@ -7,7 +7,7 @@
                         <ol class="breadcrumb mb-4">
                         </ol>
                         <div class="row">
-                             <form method="post" action="<?php echo base_url('kendaraan/ProsesTambah_kendaraan'); ?>">
+                             <form method="post" action="<?php echo base_url('kendaraan/ProsesTambah_kendaraan'); ?>" enctype="multipart/form-data">
             <div class="row mb-3">
                 <label for="no_lambung" class="col-sm-2 col-form-label">No Lambung</label>
                 <div class="col-sm-7">
@@ -60,12 +60,6 @@
                 <label for="photo_unit" class="col-sm-2 col-form-label">Photo Unit</label>
                 <div class="col-sm-7">
                     <input type="file" class="form-control" name="photo_unit">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="File_STNK/SKPD" class="col-sm-2 col-form-label">File STNK/SKPD</label>
-                <div class="col-sm-7">
-                    <input type="file" class="form-control" name="File_STNK/SKPD">
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 10px; margin-button: 10px;">

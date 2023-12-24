@@ -25,7 +25,6 @@
                                             <th>Divisi/Departement Penyerah</th>
                                             <th>Penerima</th>
                                             <th>Divisi/Departement Penerima</th>
-                                            <th>Deskripsi</th>
                                             <th>Jumlah</th>
                                             <th>Keterangan</th>
                                             <th>Tanda Tangan Penyerah</th>
@@ -46,7 +45,6 @@
                                             <td><?php echo $lk['divisi/departement_penyerah'] ?></td>
                                             <td><?php echo $lk['penerima'] ?></td>
                                             <td><?php echo $lk['divisi/departement_penerima'] ?></td>
-                                            <td><?php echo $lk['deskripsi'] ?></td>
                                             <td><?php echo $lk['jumlah'] ?></td>
                                             <td><?php echo $lk['keterangan'] ?></td>
                                             <td><?php echo $lk['ttd_penyerah'] ?></td>

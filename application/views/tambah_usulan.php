@@ -11,7 +11,7 @@
             <div class="row mb-3">
                 <label for="no_usulan" class="col-sm-2 col-form-label">No Usulan</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="no_usulan">
+                    <input type="text" class="form-control" name="no_usulan" readonly value="<?= $latestUsulanNumber ?>">
                 </div>
             </div>
             <div class="row mb-3">
@@ -21,16 +21,21 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="kode_barang" class="col-sm-2 col-form-label">Kode Barang</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="kode_barang">
+                <label for="id_penyedia" class="col-sm-2 col-form-label">Kode Barang</label>
+                    <div class="col-sm-7">
+                    <select class="form-control" id="kode_barang" name="kode_barang" required>
+                        <option value="">Pilih Kode Barang</option>
+                           <?php foreach ($barang as $p): ?>
+                            <option value="<?= $p->kode_barang ?>"><?= $p->kode_barang; ?> - <?= $p->nama_barang; ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
             <div class="row mb-3">
                 <label for="jenis" class="col-sm-2 col-form-label">Jenis</label>
                 <div class="col-sm-7">
                      <select class="form-control" name="jenis">
-            <option value="--Pilih--">--Pilih--</option>
+            <option value="--Pilih--">Pilih Jenis</option>
             <option value="Barang">Barang</option>
             <option value="Jasa">Jasa</option>
         </select>
@@ -38,11 +43,21 @@
             </div>
              <div class="additional-fields">
             <div class="row mb-3">
-                <label for="nama_produk&jasa" class="col-sm-2 col-form-label">Nama Produk&jasa</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="nama_produk&jasa">
+                <label for="nama_produk&jasa" class="col-sm-2 col-form-label">Nama Produk & Jasa</label>
+                    <div class="col-sm-7">
+                    <select class="form-control" id="nama_produk&jasa" name="nama_produk&jasa" required>
+                        <option value="">Pilih Barang</option>
+                            <?php
+                            $uniqueDivisions = array_unique(array_column($barang, 'nama_barang'));
+                            sort($uniqueDivisions);
+
+                            foreach ($uniqueDivisions as $division): ?>
+                                <option value="<?= $division ?>"><?= $division; ?></option>
+                            <?php endforeach;
+                            ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
             <div class="row mb-3">
                 <label for="spesifikasi" class="col-sm-2 col-form-label">Spesifikasi</label>
                 <div class="col-sm-7">
@@ -56,11 +71,21 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="satuan" class="col-sm-2 col-form-label">satuan</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="satuan">
+                <label for="id_penyedia" class="col-sm-2 col-form-label">Satuan</label>
+                    <div class="col-sm-7">
+                    <select class="form-control" id="satuan" name="satuan" required>
+                        <option value="">Pilih Satuan</option>
+                            <?php
+                            $uniqueDivisions = array_unique(array_column($barang, 'satuan'));
+                            sort($uniqueDivisions);
+
+                            foreach ($uniqueDivisions as $division): ?>
+                                <option value="<?= $division ?>"><?= $division; ?></option>
+                            <?php endforeach;
+                            ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
             <div class="row mb-3">
                 <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-7">
