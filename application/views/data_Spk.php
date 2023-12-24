@@ -60,6 +60,7 @@
                                             <td>
                                              <a href="<?php echo base_url() ?>Spk/editdataSpk/<?php echo $Sp['id_spk']; ?>" class="btn btn-primary btn-sm  ">Edit</a>
                                              <a href="<?php echo base_url() ?>Spk/hapusdataSpk/<?php echo $Sp['id_spk']; ?>" class="btn btn-danger btn-sm ">Hapus</a>
+                                             <a href="<?php echo base_url() ?>Spk/berita_acara_spk/<?php echo $Sp['id_spk']; ?>" class="btn btn-success btn-sm "><i class="fa fa-file"></i> Cetak Berita Acara</a>
                                             </td>
                                             </tr>
                                             <?php

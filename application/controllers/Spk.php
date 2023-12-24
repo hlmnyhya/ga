@@ -6,6 +6,7 @@ class Spk extends CI_Controller {
     {
       parent::__construct();
       $this->load->model('Spk_model');
+      $this->load->model('usulan_model');
     }
 
     public function index() {
@@ -25,9 +26,12 @@ class Spk extends CI_Controller {
     }
     public function tambah_Spk() {
         if ($this->session->userdata('user_id')) {
+            
+            $data['penyerah']=$this->usulan_model->karyawan_divisi();
+            $data['latestSPKnumber'] = $this->getlatestSPKnumber();
             $this->load->view('templates/header');
             $this->load->view('templates/nav');
-            $this->load->view('tambah_Spk');
+            $this->load->view('tambah_Spk',$data);
             $this->load->view('templates/footer');
         } else {
             redirect('Spk');
@@ -42,6 +46,7 @@ class Spk extends CI_Controller {
         </div>');
         redirect('Spk');
     }
+
     public function HapusdataSpk($id_spk)
     {
         $this->load->model('Spk_model');
@@ -67,4 +72,27 @@ class Spk extends CI_Controller {
         </div>');
         redirect('Spk');
     }
+
+public function berita_acara_spk($id_spk)
+{
+    $where = array('id_spk' => $id_spk);
+    $data['data'] = $this->db->query("SELECT * FROM spk WHERE id_spk = '$id_spk';")->result();
+    $this->load->view('laporan_spk', $data);
+}
+
+
+    public function getlatestSPKnumber()
+{
+    $query = $this->db->query("SELECT MAX(CAST(SUBSTRING(nomor_spk, 2) AS UNSIGNED)) as max_usulan FROM spk");
+    $result = $query->row();
+
+    if ($result->max_usulan) {
+        $latestNumber = str_pad($result->max_usulan + 1, 4, '0', STR_PAD_LEFT);
+    } else {
+        $latestNumber = '0001';
+    }
+
+    return $latestNumber;
+
+}
 }

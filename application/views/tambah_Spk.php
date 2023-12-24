@@ -14,10 +14,44 @@
                     <input type="date" class="form-control" name="tanggal">
                 </div>
             </div>
+             <div class="row mb-3">
+                                    <label for="id_penyedia" class="col-sm-2 col-form-label">Divisi/Departement</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="penyerah" name="divisi/departement" required>
+                                            <option value="">Pilih Divisi/Departement</option>
+                                           <?php
+                                $uniqueDivisions = array_unique(array_column($penyerah, 'divisi'));
+                                sort($uniqueDivisions);
+                                
+                                foreach ($uniqueDivisions as $division): ?>
+                                    <option value="<?= $division ?>"><?= $division; ?></option>
+                                <?php endforeach;
+                                ?>
+                                
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="id_penyedia" class="col-sm-2 col-form-label">Nama Pembuat</label>
+                                    <div class="col-sm-7">
+        <select class="form-control" id="nama_peminjam" name="nama_peminjam" required>
+            <option value="">Pilih Pembuat SPK</option>
+            <?php foreach ($penyerah as $p): ?>
+                <option value="<?= $p->nama ?>"><?= $p->nama; ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+            <div class="row mb-3">
+                <label for="jangka_waktu" class="col-sm-2 col-form-label">Tempat</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="tempat">
+                </div>
+            </div>
             <div class="row mb-3">
                 <label for="nomor_spk" class="col-sm-2 col-form-label">Nomor SPK</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="nomor_spk">
+                      <input type="text" class="form-control" name="nomor_spk" readonly value="<?= $latestSPKnumber ?>">
                 </div>
             </div>
             <div class="row mb-3">
@@ -41,8 +75,13 @@
             <div class="row mb-3">
                 <label for="rincian_biaya" class="col-sm-2 col-form-label">Rincian Biaya</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="rincian_biaya">
+                <div class="input-group">
+                <span class="input-group-text">Rp.</span>
+                <input type="text" class="form-control" name="rincian_biaya">
                 </div>
+                </div>
+            </div>
+            
             </div>
             <div class="row mb-3">
                 <label for="cara_pembayaran" class="col-sm-2 col-form-label">Cara Pembayaran</label>

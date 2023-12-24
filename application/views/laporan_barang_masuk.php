@@ -6,7 +6,6 @@ header("Content-Disposition: attachment; filename=laporan-excel.xls");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Add your head content here -->
 </head>
 <body>
     <main>
