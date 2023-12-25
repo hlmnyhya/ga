@@ -57,10 +57,24 @@
                     <input type="text" class="form-control" name="color" required="" value="<?php echo $kendaraan['color']; ?>">
                 </div>
             </div>
-            <div class="row mb-3">
-                <label for="License_Plates" class="col-sm-2 col-form-label">License Plates</label>
+           <div class="row mb-3">
+                <label for="nopol" class="col-sm-2 col-form-label">Nopol</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="License_Plates" required="" value="<?php echo $kendaraan['License_Plates']; ?>">
+                    <!-- <input type="text" class="form-control" name="nopol"> -->
+                    <select class="form-control" name="License_Plates">
+                        <option selected="" disabled=""> Pilih Nopol</option>
+                        <?php
+                        foreach ($data as $key) {
+                            # code...
+                            ?>
+                            <option><?php echo $key['License_Plates'] ?></option>
+
+                            <?php
+                        }
+                        ?>
+                        
+                        
+                    </select>
                 </div>
             </div>
             <div class="row mb-3">

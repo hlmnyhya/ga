@@ -147,7 +147,7 @@ class usulan_model extends CI_Model
 
 public function karyawan_divisi()
 {
-    $query = $this->db->query('SELECT DISTINCT `nama`, `divisi` FROM `master_karyawan` ORDER BY `nama` ASC, `divisi` ASC');
+    $query = $this->db->query('SELECT DISTINCT `nama`, `divisi`, `jabatan` FROM `master_karyawan` ORDER BY `nama` ASC, `divisi` ASC');
     return $query->result();
 }
 

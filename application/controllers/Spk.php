@@ -59,6 +59,7 @@ class Spk extends CI_Controller {
     public function editdataSpk($id_spk)
     {
         $data['spk'] = $this->Spk_model->ambil_id_spk($id_spk);
+        $data['penyerah']=$this->usulan_model->karyawan_divisi();
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
         $this->load->view('editdataSpk', $data);

@@ -35,7 +35,7 @@
                                             <th>No Mesin</th>
                                             <th>Tgl STNK/SKPD</th>
                                             <th>Color</th>
-                                            <th>License Plates</th>
+                                            <th>Nopol</th>
                                             <th>Photo Unit</th>
                                             <?php
                                 if ($this->session->userdata('level')=='Admin') {

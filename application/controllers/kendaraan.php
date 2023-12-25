@@ -25,9 +25,10 @@ class kendaraan extends CI_Controller {
     }
     public function tambah_kendaraan() {
         if ($this->session->userdata('user_id')) {
+            $data['data']=$this->kendaraan_model->semuadata();
             $this->load->view('templates/header');
             $this->load->view('templates/nav');
-            $this->load->view('tambah_kendaraan');
+            $this->load->view('tambah_kendaraan',$data);
             $this->load->view('templates/footer');
         } else {
             redirect('kendaraan');
@@ -54,6 +55,7 @@ class kendaraan extends CI_Controller {
     public function editdatakendaraan($id_mobil)
     {
         $data['kendaraan'] = $this->kendaraan_model->ambil_id_mobil($id_mobil);
+                    $data['data']=$this->kendaraan_model->semuadata();
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
         $this->load->view('editdatakendaraan', $data);

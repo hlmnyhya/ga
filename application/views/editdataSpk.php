@@ -15,6 +15,51 @@
                 </div>
             </div>
             <div class="row mb-3">
+                                    <label for="id_penyedia" class="col-sm-2 col-form-label">Divisi/Departement</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="departemen" name="departemen" required>
+                                            <option value="">Pilih Divisi/Departement</option>
+                                           <?php
+                                $uniqueDivisions = array_unique(array_column($penyerah, 'divisi'));
+                                sort($uniqueDivisions);
+                                
+                                foreach ($uniqueDivisions as $division): ?>
+                                    <option value="<?= $division ?>"><?= $division; ?></option>
+                                <?php endforeach;
+                                ?>
+                                
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="id_penyedia" class="col-sm-2 col-form-label">Nama Pembuat</label>
+                                    <div class="col-sm-7">
+        <select class="form-control" id="nama" name="nama" required>
+            <option value="">Pilih Pembuat SPK</option>
+            <?php foreach ($penyerah as $p): ?>
+                <option value="<?= $p->nama ?>"><?= $p->nama; ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+  <div class="row mb-3">
+                                    <label for="id_penyedia" class="col-sm-2 col-form-label">Jabatan</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" id="departemen" name="jabatan" required>
+                                            <option value="">Pilih Jabatan</option>
+                                           <?php
+                                $uniqueDivisions = array_unique(array_column($penyerah, 'jabatan'));
+                                sort($uniqueDivisions);
+                                
+                                foreach ($uniqueDivisions as $division): ?>
+                                    <option value="<?= $division ?>"><?= $division; ?></option>
+                                <?php endforeach;
+                                ?>
+                                
+                                        </select>
+                                    </div>
+                                </div>
+            <div class="row mb-3">
                 <label for="nomor_spk" class="col-sm-2 col-form-label">Nomor SPK</label>
                 <div class="col-sm-7">
                     <input type="text" class="form-control" name="nomor_spk" required="" value="<?php echo $spk['nomor_spk']; ?>">
