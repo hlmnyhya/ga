@@ -109,7 +109,7 @@
             <div class="row mb-3">
                 <label for="jangka_waktu" class="col-sm-2 col-form-label">Jangka Waktu</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="jangka_waktu">
+                    <input type="date" class="form-control" name="jangka_waktu">
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 10px; margin-button: 10px;">
