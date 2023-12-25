@@ -98,14 +98,29 @@ class Inventory extends CI_Controller {
         redirect('data_peminjaman');
     }
 
-    public function kembalikan($id)
-    {
-        // $this->load->model('inventory_model');
-        // $this->inventory_model->hapusdatapeminjaman();
-        $this->db->query("UPDATE inventory SET status='Dikembalikan' WHERE id_inventory='$id'");
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
-        Data berhasil di kembalikan!
-        </div>');
-        redirect('inventory/peminjaman');
+   public function kembalikan($id)
+{
+    // Ambil data dari inventory berdasarkan id
+    $inventory_data = $this->db->get_where('inventory', ['id_inventory' => $id])->row_array();
+
+    // Update status di inventory menjadi 'Dikembalikan'
+    $this->db->where('id_inventory', $id);
+    $this->db->update('inventory', ['status' => 'Dikembalikan']);
+
+    // Jika status sebelumnya 'Dipinjam', update qty di master_barang
+    if ($inventory_data['status'] == 'Dipinjam') {
+        $master_barang_data = $this->db->get_where('master_barang', ['kode_barang' => $inventory_data['nama_barang']])->row_array();
+        $new_qty = $master_barang_data['qty'] + $inventory_data['qty'];
+
+        // Update qty di master_barang
+        $this->db->where('kode_barang', $inventory_data['nama_barang']);
+        $this->db->update('master_barang', ['qty' => $new_qty]);
     }
+
+    $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+    Data berhasil dikembalikan!
+    </div>');
+    redirect('inventory/peminjaman');
+}
+
 }
