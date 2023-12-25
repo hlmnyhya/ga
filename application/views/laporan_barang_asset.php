@@ -22,7 +22,6 @@ header("Content-Disposition: attachment; filename=laporan-excel-asset.xls");
                                             <th>No</th>
                                             <th>Kode Barang</th>
                                             <th>Nama Barang</th>
-                                            <th>Jenis Barang</th>
                                             <th>QTY</th>
                                             <th>Satuan</th>
                                             <th>Kategori</th>
@@ -36,8 +35,7 @@ header("Content-Disposition: attachment; filename=laporan-excel-asset.xls");
                                             <tr>  
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $b['kode_barang_non'] ?></td>
-                                                <td><?php echo $b['nama_barang_non'] ?></td> 
-                                                <td><?php echo $b['jenis_barang_non'] ?></td>
+                                                <td><?php echo $b['nama_barang_non'] ?></td>
                                                 <td><?php echo $b['qty'] ?></td> 
                                                 <td><?php echo $b['satuan_non'] ?></td>
                                                 <td><?php echo $b['kategori_non'] ?></td>

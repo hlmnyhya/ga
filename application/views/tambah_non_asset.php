@@ -22,21 +22,17 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="jenis_barang" class="col-sm-2 col-form-label">Jenis Barang</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="jenis_barang_non">
-                </div>
-            </div>
-            <div class="row mb-3">
                 <label for="jenis_barang" class="col-sm-2 col-form-label">QTY</label>
                 <div class="col-sm-7">
-                    <input type="int" class="form-control" name="qty">
+                    <input type="number" class="form-control" name="qty">
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="satuan" class="col-sm-2 col-form-label">Satuan</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="satuan_non">
+                    <select class="form-control" name="satuan_non">
+                        <option value="UNIT">UNIT</option>
+                    </select>
                 </div>
             </div>
             <div class="row mb-3">

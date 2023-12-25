@@ -35,7 +35,6 @@ class barang_model extends CI_Model
             $data = [
                 "kode_barang_non" => $this->input->post('kode_barang_non'),
                 "nama_barang_non" => $this->input->post('nama_barang_non'),
-                "jenis_barang_non" => $this->input->post('jenis_barang_non'),
                 "satuan_non" => $this->input->post('satuan_non'),
                 "kategori_non" => $this->input->post('kategori_non'),
                 "qty" => $this->input->post('qty'),
@@ -49,7 +48,6 @@ class barang_model extends CI_Model
     $data = [
         "kode_barang_non" => $this->input->post('kode_barang_non'),
         "nama_barang_non" => $this->input->post('nama_barang_non'),
-        "jenis_barang_non" => $this->input->post('jenis_barang_non'),
         "satuan_non" => $this->input->post('satuan_non'),
         "kategori_non" => $this->input->post('kategori_non'),
         "qty" => $this->input->post('qty'),
