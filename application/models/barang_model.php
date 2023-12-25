@@ -13,6 +13,10 @@ class barang_model extends CI_Model
     {
         return $this->db->get('master_barang')->result_array();
     }
+     public function non_asset_barang()
+    {
+        return $this->db->get('master_barang_non_asset')->result_array();
+    }
     public function ProsesTambah_masuk()
     {
         $data = [
@@ -22,9 +26,46 @@ class barang_model extends CI_Model
             "qty" => $this->input->post('qty'),
             "satuan" => $this->input->post('satuan'),
             "kategori" => $this->input->post('kategori'),
+            "tanggal" => date('Y-m-d'),
         ];
         $this->db->insert('master_barang', $data);
     }
+        public function ProsesTambah_non()
+        {
+            $data = [
+                "kode_barang_non" => $this->input->post('kode_barang_non'),
+                "nama_barang_non" => $this->input->post('nama_barang_non'),
+                "jenis_barang_non" => $this->input->post('jenis_barang_non'),
+                "satuan_non" => $this->input->post('satuan_non'),
+                "kategori_non" => $this->input->post('kategori_non'),
+                "qty" => $this->input->post('qty'),
+                "tanggal" => date('Y-m-d'),
+            ];
+            $this->db->insert('master_barang_non_asset', $data);
+        }
+
+        public function ProsesEdit_non()
+{
+    $data = [
+        "kode_barang_non" => $this->input->post('kode_barang_non'),
+        "nama_barang_non" => $this->input->post('nama_barang_non'),
+        "jenis_barang_non" => $this->input->post('jenis_barang_non'),
+        "satuan_non" => $this->input->post('satuan_non'),
+        "kategori_non" => $this->input->post('kategori_non'),
+        "qty" => $this->input->post('qty'),
+        "tanggal" => date('Y-m-d'),
+    ];
+
+    $this->db->where('id_barang_non', $id_barang);
+    $this->db->update('master_barang_non_asset', $data);
+}
+
+public function Hapus_non($id_barang)
+{
+    $this->db->where('id_barang_non', $id_barang);
+    $this->db->delete('master_barang_non_asset');
+}
+
     public function ProsesTambah_keluar()
     {
         $data = [
@@ -41,12 +82,16 @@ class barang_model extends CI_Model
     public function Hapusdata($id_barang)
     {
         $this->db->where('id_barang', $id_barang);
-        $this->db->delete('data_barang');
+        $this->db->delete('master_barang');
     }
 
     public function ambil_id_barang($id_barang)
     {
-        return $this->db->get_where('barang', ['id_barang' => $id_barang])->row_array();
+        return $this->db->get_where('master_barang', ['id_barang' => $id_barang])->row_array();
+    }
+    public function ambil_id_non_asset($id_barang)
+    {
+        return $this->db->get_where('master_barang_non_asset', ['id_barang_non' => $id_barang])->row_array();
     }
 
     public function ProsesEditData()

@@ -86,7 +86,16 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?php echo base_url('barang/masuk') ?>">Data Barang</a>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Data Barang
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="<?php echo base_url('barang/non_asset') ?>">ASSET</a>
+                                            <a class="dropdown-item" href="<?php echo base_url('barang/masuk') ?>">NON ASSET</a>
+                                            <!-- Tambahkan tautan tambahan sesuai kebutuhan -->
+                                        </div>
+                                    </li>
                                     <a class="nav-link" href="<?php echo base_url('inventory/peminjaman') ?>">Peminjaman</a>
                                     <a class="nav-link" href="<?php echo base_url('inventory/pengembalian') ?>">Pengembalian</a>
                                 </nav>

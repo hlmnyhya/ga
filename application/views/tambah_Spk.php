@@ -34,7 +34,7 @@
                                 <div class="row mb-3">
                                     <label for="id_penyedia" class="col-sm-2 col-form-label">Nama Pembuat</label>
                                     <div class="col-sm-7">
-        <select class="form-control" id="nama_peminjam" name="nama_peminjam" required>
+        <select class="form-control" id="nama" name="nama" required>
             <option value="">Pilih Pembuat SPK</option>
             <?php foreach ($penyerah as $p): ?>
                 <option value="<?= $p->nama ?>"><?= $p->nama; ?></option>

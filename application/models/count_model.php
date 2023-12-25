@@ -24,11 +24,15 @@ class count_model extends CI_Model {
 
         return $query->result();
     }
-     public function get_barang() {
-        $this->db->select('kode_barang, nama_barang, kategori, qty, tanggal');
-        $this->db->from('master_barang');
-        $this->db->order_by('kode_barang', 'desc');
-        $query = $this->db->get();
-        return $query->result();
-    }
+public function get_barang() {
+    $sql = "SELECT kode_barang, nama_barang, kategori, qty, MONTHNAME(tanggal) AS tanggal
+            FROM master_barang 
+            ORDER BY YEAR(tanggal) ASC, MONTH(tanggal) ASC ";
+
+    $query = $this->db->query($sql);
+    return $query->result();
+}
+
+
+
 }

@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
             $data['keluar']=$this->db->query("SELECT * FROM usulan where status='Diterima'")->num_rows();
             $data['purchasing']=$this->db->query("SELECT * FROM usulan")->num_rows();
             $data['kendaraan']=$this->db->query("SELECT * FROM master_kendaraan")->num_rows();
+            $data['masuk']=$this->db->query("SELECT * FROM master_barang")->num_rows();
             $this->load->model('count_model');
             $data['bbm'] = $this->count_model->getKendaraan_BBM();
             $data['barang'] = $this->count_model->get_barang();

@@ -8,38 +8,50 @@
                             <li class="breadcrumb-item active">Beranda</li>
                         </ol>
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Barang Masuk</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <span class="text-white small pt-1 fw-bold"><?php echo $keluar ?></span>
-                                    <div class="card-body">Barang Keluar</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <span class="text-white small pt-1 fw-bold"><?php echo $purchasing ?></span>
-                                    <div class="card-body">Purchasing</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <span class="text-white small pt-1 fw-bold"><?php echo $kendaraan ?></span>
-                                    <div class="card-body">Data Kendaraan</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="col-xl-3 col-md-6">
+        <a href="<?= base_url('barang/masuk')?>">
+            <div class="card bg-warning text-white mb-4">
+                <h3 class="text-white  pt-1 fw-bold"><?php echo $masuk ?></h3>
+                <div class="card-body">Barang Masuk</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <!-- Isi sesuai kebutuhan -->
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <a href="<?= base_url('barang/keluar')?>">
+            <div class="card bg-success text-white mb-4">
+                <h3 class="text-white pt-1 fw-bold"><?php echo $keluar ?></h3>
+                <div class="card-body">Barang Keluar</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <!-- Isi sesuai kebutuhan -->
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <a href="<?= base_url('purchase_order/index')?>">
+            <div class="card bg-danger text-white mb-4">
+                <h3 class="text-white pt-1 fw-bold"><?php echo $purchasing ?></h3>
+                <div class="card-body">Purchasing</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <!-- Isi sesuai kebutuhan -->
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <a href="<?= base_url('kendaraan/index')?>">
+            <div class="card bg-primary text-white mb-4">
+                <h3 class="text-white pt-1 fw-bold"><?php echo $kendaraan ?></h3>
+                <div class="card-body">Data Kendaraan</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <!-- Isi sesuai kebutuhan -->
+                </div>
+            </div>
+        </a>
+    </div>
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
@@ -117,31 +129,33 @@ tooltips: {
 </script>
 
 <script>
-        var ctx = document.getElementById('myBarang').getContext('2d');
-        var top5Barang = <?php echo json_encode($barang); ?>;
+    var ctx = document.getElementById('myBarang').getContext('2d');
+    var top5Barang = <?php echo json_encode($barang); ?>;
 
-       var labels = top5Barang.map(item => item.nama_barang); // Assuming 'tanggal' is the column representing time
-        var qtyData = top5Barang.map(item => item.qty);
+    var tanggal = top5Barang.map(item => item.tanggal);
+    var qtyData = top5Barang.map(item => item.qty);
+    var namaBarang = top5Barang.map(item => item.nama_barang);
 
-        var areaChart = new Chart(ctx, {
-            type: 'line', // Use 'line' for an area chart
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Quantity',
-                    data: qtyData,
-                    fill: true, // Set to true for area chart
-                    backgroundColor: 'rgba(255, 0, 0, 1)', // Solid red color
-                    borderColor: 'rgba(255, 0, 0, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+    var areaChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: tanggal,
+            datasets: [{
+                label: 'Quantity',
+                data: qtyData,
+                fill: true,
+                backgroundColor: 'rgba(255, 0, 0, 0.2)', // Adjusted for transparency
+                borderColor: 'rgba(255, 0, 0, 1)',
+                borderWidth: 1
+            }],
+            
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
-        });
-    </script>
+        }
+    });
+</script>
