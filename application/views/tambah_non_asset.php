@@ -31,6 +31,11 @@
                 <label for="satuan" class="col-sm-2 col-form-label">Satuan</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="satuan_non">
+                        <option value="BUAH">BUAH</option>
+                        <option value="BUKU">BUKU</option>
+                        <option value="BOTOL">BOTOL</option>
+                        <option value="TABUNG">TABUNG</option>
+                        <option value="KOTAK">KOTAK</option>
                         <option value="UNIT">UNIT</option>
                     </select>
                 </div>

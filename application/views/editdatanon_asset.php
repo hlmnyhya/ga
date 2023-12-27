@@ -22,10 +22,10 @@
                     <input type="text" class="form-control" name="nama_barang_non" required="" value="<?php echo $barang['nama_barang_non']; ?>">
                 </div>
             </div>
-            <div class="row mb-3">
-                <label for="jenis_barang" class="col-sm-2 col-form-label">Jenis Barang</label>
+             <div class="row mb-3">
+                <label for="jenis_barang" class="col-sm-2 col-form-label">QTY</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="jenis_barang_non" required="" value="<?php echo $barang['jenis_barang_non']; ?>">
+                    <input type="number" class="form-control" name="qty" value="<?php echo $barang['qty']; ?>">
                 </div>
             </div>
             <div class="row mb-3">

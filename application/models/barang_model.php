@@ -43,8 +43,8 @@ class barang_model extends CI_Model
             $this->db->insert('master_barang_non_asset', $data);
         }
 
-        public function ProsesEdit_non()
-{
+    public function ProsesEdit_non()
+    {
     $data = [
         "kode_barang_non" => $this->input->post('kode_barang_non'),
         "nama_barang_non" => $this->input->post('nama_barang_non'),
@@ -56,13 +56,13 @@ class barang_model extends CI_Model
 
     $this->db->where('id_barang_non', $id_barang);
     $this->db->update('master_barang_non_asset', $data);
-}
+    }
 
-public function Hapus_non($id_barang)
-{
-    $this->db->where('id_barang_non', $id_barang);
-    $this->db->delete('master_barang_non_asset');
-}
+    public function Hapus_non($id_barang)
+    {
+        $this->db->where('id_barang_non', $id_barang);
+        $this->db->delete('master_barang_non_asset');
+    }
 
     public function ProsesTambah_keluar()
     {

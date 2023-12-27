@@ -95,7 +95,7 @@ class Barang extends CI_Controller {
             redirect('barang_keluar');
         }
     }
-     public function tambah_keluar() {
+        public function tambah_keluar() {
         // Periksa apakah pengguna telah login atau belum.
         if ($this->session->userdata('user_id')) {
             // Pengguna telah login, tampilkan halaman dashboard.

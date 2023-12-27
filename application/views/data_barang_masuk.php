@@ -63,8 +63,8 @@
                                 if ($this->session->userdata('level')=='Admin') {
                                     ?>
                                             <td>
-                                    <a href="<?php echo base_url() ?>barang/Editdatabarang/<?php echo $b['kode_barang']; ?>" class="btn btn-primary btn-sm  ">Edit</a>
-                                    <a href="<?php echo base_url() ?>barang/Hapusdatabarang/<?php echo $b['kode_barang']; ?>" class="btn btn-danger btn-sm ">Hapus</a>
+                                    <a href="<?php echo base_url() ?>barang/Editdatabarang/<?php echo $b['id_barang']; ?>" class="btn btn-primary btn-sm  ">Edit</a>
+                                    <a href="<?php echo base_url() ?>barang/Hapusdatabarang/<?php echo $b['id_barang']; ?>" class="btn btn-danger btn-sm ">Hapus</a>
                                 </td>
                                  <?php } ?>
                                             </tr>

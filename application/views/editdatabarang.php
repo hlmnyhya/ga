@@ -1,5 +1,7 @@
-<main id="main" class="main">
-    <div class="container-fluid">
+<div id="layoutSidenav_content">
+                <main>
+                    <hr>
+                    <div class="container-fluid px-4">
 
         <h3>Halaman Edit Data Barang Masuk</h3>
         <hr>
