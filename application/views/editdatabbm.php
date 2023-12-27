@@ -15,6 +15,22 @@
                     
                 </div>
             </div>
+             <div class="row mb-3">
+                <label for="id_penyedia" class="col-sm-2 col-form-label">Driver</label>
+                <div class="col-sm-7">
+                    <select class="form-control" id="penyerah" name="nama" required>
+                        <option value="">Pilih Driver</option>
+                       <?php
+                        $uniqueDivisions = array_unique(array_column($driver, 'nama'));
+                        sort($uniqueDivisions);
+
+                        foreach ($uniqueDivisions as $division): ?>
+                            <option value="<?= $division ?>"><?= $division; ?></option>
+                        <?php endforeach;
+                        ?>
+                    </select>
+                </div>
+            </div>
             <div class="row mb-3">
                 <label for="nama_barang" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-7">

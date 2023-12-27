@@ -82,6 +82,18 @@ class usulan_model extends CI_Model
         // echo "</pre>";exit;
         
         $this->db->insert('lpb', $lpb);
+
+        $barang = [
+            "kode_barang" => $this->input->post('kode_barang'),
+            "jenis_barang" => $this->input->post('jenis'),
+            "nama_barang" => $this->input->post('nama_produk&jasa'),
+            "satuan" => $this->input->post('satuan'),
+            "kategori" => 'NON ASSET', // Adjust this value as needed
+            "qty" => $this->input->post('jumlah'),
+            "tanggal" => $this->input->post('tanggal'),
+        ];
+
+        $this->db->insert('master_barang', $barang);
     }
       public function hapusdatapph($id_pph)
     {
