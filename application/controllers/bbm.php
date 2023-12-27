@@ -59,6 +59,8 @@ class bbm extends CI_Controller {
     public function editdatabbm($id_bbm)
     {
         $data['bbm'] = $this->bbm_model->ambil_id_bbm($id_bbm);
+        $data['ken']=$this->kendaraan_model->semuadata();
+        $data['driver']=$this->usulan_model->karyawan_divisi();
         $this->load->view('templates/header');
         $this->load->view('templates/nav');
         $this->load->view('editdatabbm', $data);

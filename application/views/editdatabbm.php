@@ -31,6 +31,21 @@
                     </select>
                 </div>
             </div>
+              <div class="row mb-3">
+                <label for="merk" class="col-sm-2 col-form-label">No Lambung</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="no_lambung">
+                        <option selected disabled>Pilih No Lambung</option>
+                        <?php 
+                        foreach ($ken as $key) {
+                            ?>
+                            <option value="<?php echo $key['no_lambung'] ?>"><?php echo $key['no_lambung'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
             <div class="row mb-3">
                 <label for="nama_barang" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-7">
