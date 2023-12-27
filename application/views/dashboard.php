@@ -83,10 +83,9 @@
     var chartData = <?php echo json_encode($bbm); ?>;
 
     // Extract relevant data from the chartData array
-    var labels = chartData.map(item => item.model);
-    var data = chartData.map(item => item.jumlah_harga_bbm);
-    var merkData = chartData.map(item => item.merk);
-    var jenisBbmData = chartData.map(item => item.jenis_bbm);
+    var labels = chartData.map(item => item.no_lambung);
+    var data = chartData.map(item => parseFloat(item.total_harga_bbm)); // Konversi ke Juta
+    console.log(data);
 
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -103,30 +102,23 @@
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return ''+ value + '.000.000';
+                        },
+                    }
                 }
-            },
-tooltips: {
-    callbacks: {
-        label: function(context) {
-            var label = context.dataset.label || '';
-            if (label) {
-                label += ': ';
             }
-            label += context.parsed.y + ' IDR';
-            
-            // Additional data in tooltip
-            label += '\nMerk: ' + merkData[context.dataIndex];
-            label += '\nJenis BBM: ' + jenisBbmData[context.dataIndex];
-
-            return label;
-        }
-    }
-}
-
         }
     });
 </script>
+
+
+
+
+
+
 
 <script>
     var ctx = document.getElementById('myBarang').getContext('2d');

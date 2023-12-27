@@ -13,6 +13,7 @@ class Dashboard extends CI_Controller {
             $data['masuk']=$this->db->query("SELECT * FROM master_barang")->num_rows();
             $this->load->model('count_model');
             $data['bbm'] = $this->count_model->getKendaraan_BBM();
+            // var_dump($data['bbm']);exit;
             $data['barang'] = $this->count_model->get_barang();
             $this->load->view('templates/header');
             $this->load->view('templates/nav');
